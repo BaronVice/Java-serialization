@@ -3,15 +3,17 @@ package Solutions;
 import java.io.Serial;
 import java.io.Serializable;
 
-public abstract class SolutionPattern implements SolutionAnswer, Serializable {
-    protected String filePath;
+public abstract class SolutionPattern implements Serializable {
+    protected String filePath = "path_should_be_here";
     protected String line;
     protected String result;
 
 
-    @Override
     public void setLine(String line) {
         this.line = line;
+    }
+    public String getResult(){
+        return this.result;
     }
     public String getLine(){
         return this.line;
@@ -22,13 +24,11 @@ public abstract class SolutionPattern implements SolutionAnswer, Serializable {
     protected void showResult(){
         System.out.printf("Результат выполнения: %s\n", result);
     }
-    @Override
-    public void getResult() {
+    public void handleResult() {
         computeResult();
         showResult();
     }
 
-    @Override
     public String toString(){
         return String.format("%s : %s", this.line, this.result);
     }

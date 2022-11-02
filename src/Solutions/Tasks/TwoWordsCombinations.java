@@ -3,14 +3,16 @@ package Solutions.Tasks;
 import Solutions.SolutionPattern;
 
 public class TwoWordsCombinations extends SolutionPattern {
-
-    private String filePath = "src/Solutions/Tasks/Results/twoWordsCombinationsResults";
-    public TwoWordsCombinations(){}
+    public TwoWordsCombinations(){
+        this.filePath = "src/Solutions/Tasks/Results/twoWordsCombinationsResults";
+    }
     public TwoWordsCombinations(String line){
         this.line = line;
+        this.filePath = "src/Solutions/Tasks/Results/twoWordsCombinationsResults";
     }
     public TwoWordsCombinations(TwoWordsCombinations twoWordsCombinations){
         this.line = twoWordsCombinations.line;
+        this.filePath = "src/Solutions/Tasks/Results/twoWordsCombinationsResults";
     }
 
     protected void computeResult(){
@@ -34,6 +36,7 @@ public class TwoWordsCombinations extends SolutionPattern {
                 }
             }
         }
+        result = result.substring(0, result.length() - 2);
         // Запись
 
     }

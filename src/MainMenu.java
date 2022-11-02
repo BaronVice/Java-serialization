@@ -1,4 +1,5 @@
 import CustomExceptions.*;
+import Solutions.SolutionPattern;
 import Solutions.Tasks.*;
 
 import java.util.Scanner;
@@ -69,26 +70,20 @@ public class MainMenu {
         return scan.nextLine();
     }
 
+    private void handleOption(SolutionPattern solution, String chosenOption) throws Exception{
+        solution.setLine(sendRequest(chosenOption));
+        solution.handleResult();
+        FileRW.writeObjectToFile(solution);
+    }
+
     private void requestMainOption(String chosenOption) throws Exception {
         String currentBlock = "main";
 
         switch (chosenOption) {
-            case "1" -> {
-                solutionA.setLine(sendRequest(chosenOption));
-                solutionA.getResult();
-            }
-            case "2" -> {
-                solutionB.setLine(sendRequest(chosenOption));
-                solutionB.getResult();
-            }
-            case "3" -> {
-                solutionC.setLine(sendRequest(chosenOption));
-                solutionC.getResult();
-            }
-            case "4" -> {
-                solutionD.setLine(sendRequest(chosenOption));
-                solutionD.getResult();
-            }
+            case "1" -> handleOption(solutionA, chosenOption);
+            case "2" -> handleOption(solutionB, chosenOption);
+            case "3" -> handleOption(solutionC, chosenOption);
+            case "4" -> handleOption(solutionD, chosenOption);
             case "5" -> {
                 currentBlock = "results";
                 printDescription("results");

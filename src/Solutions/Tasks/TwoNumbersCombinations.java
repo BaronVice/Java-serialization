@@ -5,14 +5,16 @@ import Solutions.SolutionPattern;
 import java.util.ArrayList;
 
 public class TwoNumbersCombinations extends SolutionPattern {
-
-    private String filePath = "src/Solutions/Tasks/Results/twoNumbersCombinationsResults";
-    public TwoNumbersCombinations(){}
+    public TwoNumbersCombinations(){
+        this.filePath = "src/Solutions/Tasks/Results/twoNumbersCombinationsResults";
+    }
     public TwoNumbersCombinations(String line){
         this.line = line;
+        this.filePath = "src/Solutions/Tasks/Results/twoNumbersCombinationsResults";
     }
     public TwoNumbersCombinations(TwoNumbersCombinations twoNumbersCombinations){
         this.line = twoNumbersCombinations.line;
+        this.filePath = "src/Solutions/Tasks/Results/twoNumbersCombinationsResults";
     }
 
     protected void computeResult() {
@@ -42,6 +44,7 @@ public class TwoNumbersCombinations extends SolutionPattern {
                 }
             }
         }
+        result = result.substring(0, result.length() - 2);
         // Запись
     }
 }

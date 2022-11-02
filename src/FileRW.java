@@ -32,9 +32,16 @@ public class FileRW {
 
 
     // Write object to file
-    public static void writeObjectToFile(String filePath, SolutionPattern objectToWrite){
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))){
+    public static void writeObjectToFile(SolutionPattern objectToWrite){
+        ArrayList<String> possibleIssues = new ArrayList<>();
+        possibleIssues.add("задана пустая строка");
+        possibleIssues.add("в массиве чисел встречен посторонний символ (для дроби используйте точку)");
 
+        if (possibleIssues.contains(objectToWrite.getResult())){
+            return;
+        }
+
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath()))){
             oos.writeObject(objectToWrite);
             oos.flush();
 //            oos.close();

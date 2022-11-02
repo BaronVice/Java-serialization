@@ -3,14 +3,16 @@ package Solutions.Tasks;
 import Solutions.SolutionPattern;
 
 public class ThreeWordsCombinations extends SolutionPattern {
-
-    private String filePath = "src/Solutions/Tasks/Results/threeWordsCombinationsResults";
-    public ThreeWordsCombinations(){}
+    public ThreeWordsCombinations(){
+        this.filePath = "src/Solutions/Tasks/Results/threeWordsCombinationsResults";
+    }
     public ThreeWordsCombinations(String line){
         this.line = line;
+        this.filePath = "src/Solutions/Tasks/Results/threeWordsCombinationsResults";
     }
     public ThreeWordsCombinations(ThreeWordsCombinations threeWordsCombinations){
         this.line = threeWordsCombinations.line;
+        this.filePath = "src/Solutions/Tasks/Results/threeWordsCombinationsResults";
     }
 
     private long factorial(int n) {

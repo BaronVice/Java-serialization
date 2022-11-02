@@ -8,14 +8,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsonantsCounter extends SolutionPattern {
-
-    private String filePath = "src/Solutions/Tasks/Results/consonantsCounterResults";
-    public ConsonantsCounter(){}
+    public ConsonantsCounter(){
+        this.filePath = "src/Solutions/Tasks/Results/consonantsCounterResults";
+    }
     public ConsonantsCounter(String line){
         this.line = line;
+        this.filePath = "src/Solutions/Tasks/Results/consonantsCounterResults";
     }
     public ConsonantsCounter(ConsonantsCounter consonantsCounter){
         this.line = consonantsCounter.line;
+        this.filePath = "src/Solutions/Tasks/Results/consonantsCounterResults";
     }
 
     protected void computeResult(){
