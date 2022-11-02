@@ -22,26 +22,23 @@ public class MainMenu {
     }
 
     private void printDescription(String block) throws notExistentBlock {
-        switch (block){
-            case "main":
-                System.out.println("\nВыбор команды:\n" +
-                        "1) Выполнить задание a.\n" +
-                        "2) Выполнить задание b.\n" +
-                        "3) Выполнить задание c.\n" +
-                        "4) Выполнить задание d.\n" +
-                        "5) Вывести предыдущие результаты\n" +
-                        "6) Выход\n");
-                break;
-            case "results":
-                System.out.println("\nВыбор команды:\n" +
-                        "1) Получить результаты a.\n" +
-                        "2) Получить результаты b.\n" +
-                        "3) Получить результаты c.\n" +
-                        "4) Получить результаты d.\n" +
-                        "5) Назад\n");
-                break;
-            default:
-                throw new notExistentBlock("Chosen block does not exists");
+        switch (block) {
+            case "main" -> System.out.println(
+                    "\nВыбор команды:\n" +
+                    "1) Выполнить задание a.\n" +
+                    "2) Выполнить задание b.\n" +
+                    "3) Выполнить задание c.\n" +
+                    "4) Выполнить задание d.\n" +
+                    "5) Вывести предыдущие результаты\n" +
+                    "6) Выход\n");
+            case "results" -> System.out.println(
+                    "\nВыбор команды:\n" +
+                    "1) Получить результаты a.\n" +
+                    "2) Получить результаты b.\n" +
+                    "3) Получить результаты c.\n" +
+                    "4) Получить результаты d.\n" +
+                    "5) Назад\n");
+            default -> throw new notExistentBlock("Chosen block does not exists");
         }
     }
 
@@ -50,15 +47,10 @@ public class MainMenu {
         System.out.print("Выбор команды (ее номер): ");
         String chosenOption = scan.nextLine();
 
-        switch (block){
-            case "main":
-                requestMainOption(chosenOption);
-                break;
-            case "results":
-                requestResultsOption(chosenOption);
-                break;
-            default:
-                throw new notExistentBlock("Chosen block does not exists");
+        switch (block) {
+            case "main" -> requestMainOption(chosenOption);
+            case "results" -> requestResultsOption(chosenOption);
+            default -> throw new notExistentBlock("Chosen block does not exists");
         }
     }
 
@@ -79,44 +71,33 @@ public class MainMenu {
 
     private void requestMainOption(String chosenOption) throws Exception {
         String currentBlock = "main";
-        String inputLine;
 
-        // TODO: после создания solution прикрутить вызов методов вычисления
-        //  подумать над созданием отдельных объектов (вспомогательные методы
-        //  при uppercaste'e теряются (вроде бы))
-        switch (chosenOption){
-            case "1":
+        switch (chosenOption) {
+            case "1" -> {
                 solutionA.setLine(sendRequest(chosenOption));
                 solutionA.getResult();
-
-                System.out.println("Выполнение a.");
-                break;
-            case "2":
+            }
+            case "2" -> {
                 solutionB.setLine(sendRequest(chosenOption));
-                System.out.println("Выполнение b.");
-                break;
-            case "3":
+                solutionB.getResult();
+            }
+            case "3" -> {
                 solutionC.setLine(sendRequest(chosenOption));
-                System.out.println("Выполнение c.");
-                break;
-            case "4":
+                solutionC.getResult();
+            }
+            case "4" -> {
                 solutionD.setLine(sendRequest(chosenOption));
-                System.out.println("Выполнение d.");
-                break;
-            case "5":
+                solutionD.getResult();
+            }
+            case "5" -> {
                 currentBlock = "results";
                 printDescription("results");
-                break;
-            case "6":
-                System.exit(0);
-                break;
-            case "help":
-                printDescription("main");
-                break;
-            default:
-                System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
-                break;
-        };
+            }
+            case "6" -> System.exit(0);
+            case "help" -> printDescription("main");
+            default -> System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
+        }
+
         chooseOption(currentBlock);
     }
 
@@ -147,7 +128,7 @@ public class MainMenu {
             default:
                 System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
                 break;
-        };
+        }
         chooseOption(currentBlock);
     }
 

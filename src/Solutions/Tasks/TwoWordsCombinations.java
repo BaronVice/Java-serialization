@@ -13,8 +13,14 @@ public class TwoWordsCombinations extends SolutionPattern {
         this.line = twoWordsCombinations.line;
     }
 
-    protected String computeResult(){
+    protected void computeResult(){
+        if(isEmptyLine()){
+            this.result = "задана пустая строка";
+            return;
+        }
+
         result = "";
+
         String[] allWords = line.split("[,.\\s+]");
 
         for (String firstWord : allWords) {
@@ -28,7 +34,7 @@ public class TwoWordsCombinations extends SolutionPattern {
                 }
             }
         }
+        // Запись
 
-        return result;
     }
 }

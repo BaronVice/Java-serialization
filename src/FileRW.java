@@ -3,7 +3,6 @@ import Solutions.SolutionPattern;
 import java.io.*;
 import java.util.ArrayList;
 
-    // TODO: попробовать сделать родителем для решений и везде определить текущий тип объекта
 public class FileRW {
 
     // Read objects from file

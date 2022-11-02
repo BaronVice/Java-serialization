@@ -18,7 +18,12 @@ public class ConsonantsCounter extends SolutionPattern {
         this.line = consonantsCounter.line;
     }
 
-    protected String computeResult(){
+    protected void computeResult(){
+        if(isEmptyLine()){
+            this.result = "задана пустая строка";
+            return;
+        }
+
         result = "";
         String consonants = "";
         int total = 0;
@@ -35,7 +40,6 @@ public class ConsonantsCounter extends SolutionPattern {
             }
         }
         result = String.valueOf(total);
-        return result;
-
+        // Запись
     }
 }

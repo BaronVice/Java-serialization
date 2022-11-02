@@ -19,9 +19,13 @@ public abstract class SolutionPattern implements SolutionAnswer, Serializable {
     public String getFilePath(){
         return this.filePath;
     }
+    protected void showResult(){
+        System.out.printf("Результат выполнения: %s\n", result);
+    }
     @Override
-    public String getResult() {
-        return computeResult();
+    public void getResult() {
+        computeResult();
+        showResult();
     }
 
     @Override
@@ -29,15 +33,14 @@ public abstract class SolutionPattern implements SolutionAnswer, Serializable {
         return String.format("%s : %s", this.line, this.result);
     }
 
-    // TODO: сделать нормальную проверку на пустую линию (это уже не то, с чем хочется работать)
-    protected boolean checkIfEmpty(String line){
-        if(this.line == "EmptyLineGiven"){
+    protected boolean isEmptyLine(){
+        if(this.line.trim().isEmpty()){
             return true;
         }
         return false;
     }
 
-    protected String computeResult(){
-        return "PatternResult";
+    protected void computeResult(){
+        // algorithm here
     }
 }

@@ -14,8 +14,13 @@ public class TwoNumbersCombinations extends SolutionPattern {
     public TwoNumbersCombinations(TwoNumbersCombinations twoNumbersCombinations){
         this.line = twoNumbersCombinations.line;
     }
-    // TODO: возможно при исключениях следует приписывать их в result
-    protected String computeResult() {
+
+    protected void computeResult() {
+        if(isEmptyLine()){
+            this.result = "задана пустая строка";
+            return;
+        }
+
         result = "";
         String[] splitLine = line.split("[\\s+]");
         ArrayList<Float> numbers = new ArrayList<>();
@@ -25,23 +30,18 @@ public class TwoNumbersCombinations extends SolutionPattern {
                 numbers.add(Float.parseFloat(el));
             }
             catch (NumberFormatException e){
-                return result;
+                result = "в массиве чисел встречен посторонний символ (для дроби используйте точку)";
+                return;
             }
         }
-
-//        if (numbers.size() < 2){
-//            output += "Can't work with zero or one element\n";
-//            return output;
-//        }
 
         for (float first : numbers) {
             for (float second : numbers) {
                 if (first * 2 < second) {
-                    result += String.format("%f %f, ", first, second);
+                    result += String.format("%f %f; ", first, second);
                 }
             }
         }
-
-        return result;
+        // Запись
     }
 }

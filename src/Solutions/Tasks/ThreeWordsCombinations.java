@@ -25,8 +25,14 @@ public class ThreeWordsCombinations extends SolutionPattern {
         return (int)(factorial(num) / ((factorial(3)*factorial(num-3))));
     }
 
-    protected String computeResult() {
+    protected void computeResult() {
+        if(isEmptyLine()){
+            this.result = "задана пустая строка";
+            return;
+        }
+
         result = "";
+
         String[] allWords = line.split("[,.\\s+]");
         int counter = 0;
         int combinations = 0;
@@ -38,6 +44,6 @@ public class ThreeWordsCombinations extends SolutionPattern {
         combinations = countCombs(counter);
 
         result = String.valueOf(combinations);
-        return result;
+        // Запись
     }
 }
