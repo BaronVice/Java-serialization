@@ -2,7 +2,10 @@ package Solutions.Tasks;
 
 import Solutions.SolutionPattern;
 
-public class ThreeWordsCombinations extends SolutionPattern {
+import java.io.Serializable;
+
+public class ThreeWordsCombinations extends SolutionPattern implements Serializable {
+//    "src/Solutions/Tasks/Results/threeWordsCombinationsResults";
     public ThreeWordsCombinations(){
         this.filePath = "src/Solutions/Tasks/Results/threeWordsCombinationsResults";
     }
@@ -46,6 +49,5 @@ public class ThreeWordsCombinations extends SolutionPattern {
         combinations = countCombs(counter);
 
         result = String.valueOf(combinations);
-        // Запись
     }
 }

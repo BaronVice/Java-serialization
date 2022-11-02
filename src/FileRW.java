@@ -11,6 +11,7 @@ public class FileRW {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))){
             while (true){
                 SolutionPattern solution = (SolutionPattern)ois.readObject();
+//                System.out.println(solution);
                 if(solution != null){
                     solutions.add(solution);
                 }
@@ -24,7 +25,7 @@ public class FileRW {
         catch (IOException e){
         }
         catch (ClassNotFoundException e){
-            System.out.println("Wrong class");
+            System.out.println("Чтение постороннего класса");
         }
 
         return solutions;
@@ -41,13 +42,13 @@ public class FileRW {
             return;
         }
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath()))){
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath(), true))){
             oos.writeObject(objectToWrite);
             oos.flush();
-//            oos.close();
+            oos.close();
         }
         catch (IOException e){
-            System.out.println("File not found");
+            System.out.println("Такой путь не найден");
         }
     }
 

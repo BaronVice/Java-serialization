@@ -2,12 +2,13 @@ package Solutions.Tasks;
 
 import Solutions.SolutionPattern;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ConsonantsCounter extends SolutionPattern {
+public class ConsonantsCounter extends SolutionPattern implements Serializable {
     public ConsonantsCounter(){
         this.filePath = "src/Solutions/Tasks/Results/consonantsCounterResults";
     }
@@ -42,6 +43,5 @@ public class ConsonantsCounter extends SolutionPattern {
             }
         }
         result = String.valueOf(total);
-        // Запись
     }
 }

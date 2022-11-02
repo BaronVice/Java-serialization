@@ -2,6 +2,7 @@ import CustomExceptions.*;
 import Solutions.SolutionPattern;
 import Solutions.Tasks.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -96,22 +97,33 @@ public class MainMenu {
         chooseOption(currentBlock);
     }
 
+    private void handlePreviousResults(SolutionPattern solution){
+        ArrayList<SolutionPattern> solutions = FileRW.readPreviousResults(solution.getFilePath());
+        if (solutions.size() == 0){
+            System.out.println("Пока что результатов нет .-.");
+        }
+        else {
+            for(int i = 0; i < solutions.size(); i++){
+                System.out.println(solutions.get(i));
+            }
+        }
+    }
+
     private void requestResultsOption(String chosenOption) throws Exception {
         String currentBlock = "results";
 
-        // TODO: к каждому случаю приписать чтение файла
         switch (chosenOption){
             case "1":
-                System.out.println("Вывод результатов a.");
+                handlePreviousResults(solutionA);
                 break;
             case "2":
-                System.out.println("Вывод результатов b.");
+                handlePreviousResults(solutionB);
                 break;
             case "3":
-                System.out.println("Вывод результатов c.");
+                handlePreviousResults(solutionC);
                 break;
             case "4":
-                System.out.println("Вывод результатов d.");
+                handlePreviousResults(solutionD);
                 break;
             case "5":
                 currentBlock = "main";

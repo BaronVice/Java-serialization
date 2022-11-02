@@ -2,7 +2,9 @@ package Solutions.Tasks;
 
 import Solutions.SolutionPattern;
 
-public class TwoWordsCombinations extends SolutionPattern {
+import java.io.Serializable;
+
+public class TwoWordsCombinations extends SolutionPattern implements Serializable{
     public TwoWordsCombinations(){
         this.filePath = "src/Solutions/Tasks/Results/twoWordsCombinationsResults";
     }
@@ -37,7 +39,5 @@ public class TwoWordsCombinations extends SolutionPattern {
             }
         }
         result = result.substring(0, result.length() - 2);
-        // Запись
-
     }
 }

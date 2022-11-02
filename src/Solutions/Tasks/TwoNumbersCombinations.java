@@ -2,9 +2,10 @@ package Solutions.Tasks;
 
 import Solutions.SolutionPattern;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TwoNumbersCombinations extends SolutionPattern {
+public class TwoNumbersCombinations extends SolutionPattern implements Serializable {
     public TwoNumbersCombinations(){
         this.filePath = "src/Solutions/Tasks/Results/twoNumbersCombinationsResults";
     }
@@ -45,6 +46,5 @@ public class TwoNumbersCombinations extends SolutionPattern {
             }
         }
         result = result.substring(0, result.length() - 2);
-        // Запись
     }
 }
