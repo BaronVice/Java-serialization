@@ -42,10 +42,10 @@ public class FileRW {
             return;
         }
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath(), true))){
+        try(AppendableObjectOutputStream oos = new AppendableObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath(), true))){
             oos.writeObject(objectToWrite);
             oos.flush();
-            oos.close();
+//            oos.close();
         }
         catch (IOException e){
             System.out.println("Такой путь не найден");
