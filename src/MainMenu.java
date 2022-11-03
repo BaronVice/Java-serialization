@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainMenu {
-
     private TwoWordsCombinations solutionA = new TwoWordsCombinations();
     private ThreeWordsCombinations solutionB = new ThreeWordsCombinations();
     private TwoNumbersCombinations solutionC = new TwoNumbersCombinations();

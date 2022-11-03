@@ -26,6 +26,10 @@ public class TwoWordsCombinations extends SolutionPattern implements Serializabl
         result = "";
 
         String[] allWords = line.split("[,.\\s+]");
+        if(allWords.length == 1){
+            this.result = "нужно как минимум два слова для составления пар";
+            return;
+        }
 
         for (String firstWord : allWords) {
             if(firstWord.length() != 0){

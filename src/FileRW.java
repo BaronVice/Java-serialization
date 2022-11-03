@@ -37,6 +37,7 @@ public class FileRW {
         ArrayList<String> possibleIssues = new ArrayList<>();
         possibleIssues.add("задана пустая строка");
         possibleIssues.add("в массиве чисел встречен посторонний символ (для дроби используйте точку)");
+        possibleIssues.add("нужно как минимум два слова для составления пар");
 
         if (possibleIssues.contains(objectToWrite.getResult())){
             return;
