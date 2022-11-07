@@ -102,8 +102,8 @@ public class MainMenu {
             System.out.println("Пока что результатов нет .-.");
         }
         else {
-            for(int i = 0; i < solutions.size(); i++){
-                System.out.println(solutions.get(i));
+            for (SolutionPattern solutionPattern : solutions) {
+                System.out.println(solutionPattern);
             }
         }
     }
@@ -111,29 +111,17 @@ public class MainMenu {
     private void requestResultsOption(String chosenOption) throws Exception {
         String currentBlock = "results";
 
-        switch (chosenOption){
-            case "1":
-                handlePreviousResults(solutionA);
-                break;
-            case "2":
-                handlePreviousResults(solutionB);
-                break;
-            case "3":
-                handlePreviousResults(solutionC);
-                break;
-            case "4":
-                handlePreviousResults(solutionD);
-                break;
-            case "5":
+        switch (chosenOption) {
+            case "1" -> handlePreviousResults(solutionA);
+            case "2" -> handlePreviousResults(solutionB);
+            case "3" -> handlePreviousResults(solutionC);
+            case "4" -> handlePreviousResults(solutionD);
+            case "5" -> {
                 currentBlock = "main";
                 printDescription("main");
-                break;
-            case "help":
-                printDescription("results");
-                break;
-            default:
-                System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
-                break;
+            }
+            case "help" -> printDescription("results");
+            default -> System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
         }
         chooseOption(currentBlock);
     }

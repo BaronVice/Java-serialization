@@ -22,7 +22,7 @@ public class FileRW {
 
 //            ois.close();
         }
-        catch (IOException e){
+        catch (IOException ignored){
         }
         catch (ClassNotFoundException e){
             System.out.println("Чтение постороннего класса");

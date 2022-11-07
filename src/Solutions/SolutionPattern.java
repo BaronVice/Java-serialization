@@ -1,6 +1,5 @@
 package Solutions;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class SolutionPattern implements Serializable {
@@ -34,10 +33,7 @@ public abstract class SolutionPattern implements Serializable {
     }
 
     protected boolean isEmptyLine(){
-        if(this.line.trim().isEmpty()){
-            return true;
-        }
-        return false;
+        return this.line.trim().isEmpty();
     }
 
     protected void computeResult(){
