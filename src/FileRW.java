@@ -71,8 +71,26 @@ public class FileRW {
             System.out.println("Чтение постороннего класса");
         }
         catch (IOException ignored){}
+    }
 
+    // Delete object from file
+    public static void deleteObjectFromFile(SolutionPattern solutionObj, int index){
+        ArrayList<SolutionPattern> solutionsAfterRemove = readPreviousResults(solutionObj.getFilePath());
+        try{
+            solutionsAfterRemove.remove(index-1);
+        }
+        catch (IndexOutOfBoundsException e){
+            System.out.println("Позиция не найдена");
+            return;
+        }
 
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(solutionObj.getFilePath()))) {
+            for (SolutionPattern solution : solutionsAfterRemove){
+                oos.writeObject(solution);
+            }
+            oos.flush();
+        }
+        catch (IOException ignored){}
 
 
     }
