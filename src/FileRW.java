@@ -43,14 +43,38 @@ public class FileRW {
             return;
         }
 
-        try(AppendableObjectOutputStream oos = new AppendableObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath(), true))){
-            oos.writeObject(objectToWrite);
-            oos.flush();
-//            oos.close();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(objectToWrite.getFilePath()))){
+
+                SolutionPattern solution = (SolutionPattern) ois.readObject();
+                if (solution != null) {
+                    try(AppendableObjectOutputStream oos = new AppendableObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath(), true))){
+                        oos.writeObject(objectToWrite);
+                        oos.flush();
+                    }
+
+                } else {
+                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath()))) {
+                        oos.writeObject(objectToWrite);
+                        oos.flush();
+                    }
+                }
+
         }
-        catch (IOException e){
-            System.out.println("Такой путь не найден");
+        catch (FileNotFoundException e){
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(objectToWrite.getFilePath()))) {
+                oos.writeObject(objectToWrite);
+                oos.flush();
+            }
+            catch (IOException ignored){}
         }
+        catch (ClassNotFoundException e){
+            System.out.println("Чтение постороннего класса");
+        }
+        catch (IOException ignored){}
+
+
+
+
     }
 
 }
