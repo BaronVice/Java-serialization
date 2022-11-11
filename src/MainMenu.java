@@ -31,7 +31,8 @@ public class MainMenu {
                     "3) Выполнить задание c.\n" +
                     "4) Выполнить задание d.\n" +
                     "5) Вывести предыдущие результаты\n" +
-                    "6) Выход\n");
+                    "6) Удалить один из результатов\n" +
+                    "7) Выход\n");
             case "results" -> System.out.println(
                     "\nВыбор команды:\n" +
                     "1) Получить результаты a.\n" +
@@ -39,6 +40,14 @@ public class MainMenu {
                     "3) Получить результаты c.\n" +
                     "4) Получить результаты d.\n" +
                     "5) Назад\n");
+            case "remove" -> System.out.println(
+                    "\nВыбор команды:\n" +
+                    "1) Удалить результат a.\n" +
+                    "2) Удалить результат b.\n" +
+                    "3) Удалить результат c.\n" +
+                    "4) Удалить результат d.\n" +
+                    "5) Назад\n");
+
             default -> throw new notExistentBlock("Chosen block does not exists");
         }
     }
@@ -51,6 +60,7 @@ public class MainMenu {
         switch (block) {
             case "main" -> requestMainOption(chosenOption);
             case "results" -> requestResultsOption(chosenOption);
+            case "remove" -> requestRemoveOption(chosenOption);
             default -> throw new notExistentBlock("Chosen block does not exists");
         }
     }
@@ -88,7 +98,11 @@ public class MainMenu {
                 currentBlock = "results";
                 printDescription("results");
             }
-            case "6" -> System.exit(0);
+            case "6" -> {
+                currentBlock = "remove";
+                printDescription("remove");
+            }
+            case "7" -> System.exit(0);
             case "help" -> printDescription("main");
             default -> System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
         }
@@ -116,6 +130,38 @@ public class MainMenu {
             case "2" -> handlePreviousResults(solutionB);
             case "3" -> handlePreviousResults(solutionC);
             case "4" -> handlePreviousResults(solutionD);
+            case "5" -> {
+                currentBlock = "main";
+                printDescription("main");
+            }
+            case "help" -> printDescription("results");
+            default -> System.out.println("Не найдено. Для повторного вывода списка команд введите \"help\"");
+        }
+        chooseOption(currentBlock);
+    }
+
+    private void pickIndex(SolutionPattern solution){
+        System.out.print("Введите номер записи для удаления: ");
+
+        try{
+            Scanner scan = new Scanner(System.in);
+            int index = scan.nextInt();
+
+            FileRW.deleteObjectFromFile(solution, index);
+        }
+        catch (Exception e){
+            System.out.println("Позиция не найдена");
+        }
+    }
+
+    private void requestRemoveOption(String chosenOption) throws Exception {
+        String currentBlock = "remove";
+
+        switch (chosenOption) {
+            case "1" -> pickIndex(solutionA);
+            case "2" -> pickIndex(solutionB);
+            case "3" -> pickIndex(solutionC);
+            case "4" -> pickIndex(solutionD);
             case "5" -> {
                 currentBlock = "main";
                 printDescription("main");
